@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Guess the Number Game</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                margin-top: 50px;
+            }
+            .output {
+                margin-top: 20px;
+                font-size: 1.2em;
+            }
+            input {
+                padding: 10px;
+                font-size: 1em;
+            }
+            button {
+                padding: 10px 20px;
+                font-size: 1em;
+                margin-left: 10px;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <h1>Guess the Magic Number! 🔮</h1>
+        <p>Guess a number between 1 and 10:</p>
+    
+        <input type="number" id="userGuess" placeholder="Enter your guess">
+        <button onclick="guessNumber()">Guess</button>
+    
+        <div class="output" id="outputMessage"></div>
+    
+        <script>
+            let randomNumber = Math.floor(Math.random() * 10) + 1;
+            let attempts = 0;
+    
+            function guessNumber() {
+                let userGuess = document.getElementById('userGuess').value;
+                attempts++;
+    
+                let message = "";
+    
+                if (userGuess == randomNumber) {
+                    message = `🎉 Bravo! You guessed it right in ${attempts} attempts! The magic number was: ${randomNumber}`;
+                } else if (userGuess < randomNumber) {
+                    message = "📉 Oops, that's too low! Try again! 🔁";
+                } else {
+                    message = "📈 Uh-oh, that's too high! Try again! 🔁";
+                }
+    
+                document.getElementById('outputMessage').innerHTML = message;
+            }
+        </script>
+    
+    </body>
+    </html>
+    
